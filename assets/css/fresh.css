@@ -1,0 +1,368 @@
+/* ══════════════════════════════════════════
+   FRESH (CARDÁPIO SEM ÁLCOOL)
+
+   Layout diferente dos drinks:
+   → imagem no topo do card (área visual)
+   → texto embaixo (corpo do card)
+   → tema verde (#3ddc84)
+   → emojis flutuando no fundo da seção
+══════════════════════════════════════════ */
+
+.fresh {
+  background: var(--clr-bg);
+  /* leve névoa verde no topo da seção */
+  background-image: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(0,60,20,0.16) 0%, transparent 60%);
+  padding:     90px 24px 80px;
+  overflow:    hidden;
+  position:    relative;
+  flex-shrink: 0;
+}
+
+/* Texto gigante decorativo no fundo */
+.fresh__watermark {
+  position:       absolute;
+  top: 50%; left: 50%;
+  transform:      translate(-50%, -50%);
+  font-size:      clamp(80px, 16vw, 200px);
+  font-weight:    900;
+  color:          rgba(61,220,132,0.028);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select:    none;
+  white-space:    nowrap;
+  z-index: 0;
+}
+
+/* Emojis flutuando suavemente no fundo */
+.fresh__particles {
+  position:       absolute;
+  inset:          0;
+  pointer-events: none;
+  z-index: 0;
+}
+.fresh__particles span {
+  position:   absolute;
+  left:       var(--ax, 50%);
+  top:        var(--ay, 50%);
+  font-size:  calc(var(--as, 1) * 1.6rem);
+  opacity:    0.18;
+  animation:  ambient-float var(--ad, 5s) ease-in-out infinite alternate;
+  user-select: none;
+}
+
+@keyframes ambient-float {
+  from { transform: translateY(0)     rotate(0deg); }
+  to   { transform: translateY(-22px) rotate(12deg); }
+}
+
+/* ── Cabeçalho ── */
+.fresh__header {
+  text-align:    center;
+  margin-bottom: 40px;
+  position:      relative;
+  z-index:       1;
+  padding:       0 24px;
+}
+
+/* Tag "Sem álcool" acima do título */
+.fresh__eyebrow {
+  display:     inline-flex;
+  align-items: center;
+  gap:         6px;
+  font-size:   10px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color:       var(--clr-green);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  border:        1px solid rgba(61,220,132,0.35);
+  padding:       6px 18px;
+  border-radius: var(--radius-pill);
+  background:    rgba(61,220,132,0.07);
+  backdrop-filter: blur(6px);
+}
+
+.fresh__title {
+  font-size:      clamp(38px, 5.5vw, 72px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height:    0.95;
+  margin-top:     10px;
+}
+.fresh__title span { color: var(--clr-green); }
+
+.fresh__subtitle {
+  margin-top:     14px;
+  font-size:      12px;
+  color:          rgba(255,255,255,0.35);
+  font-weight:    600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Grid de cards ── */
+.fresh__grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   20px;
+  max-width:             var(--max-width);
+  margin:                0 auto;
+  position:              relative;
+  z-index:               1;
+}
+
+/* ─────────────────────────────────────────
+   FRESH CARD
+
+   Diferente do drink-card, o fresh-card
+   tem layout vertical:
+   → [área visual: imagem + emojis]
+   → [corpo: badge, tags, nome, desc, botão]
+───────────────────────────────────────── */
+.fresh-card {
+  border-radius:   var(--radius-card);
+  overflow:        hidden;
+  background:      #0a0a0a;
+  border:          1px solid rgba(255,255,255,0.06);
+  display:         flex;
+  flex-direction:  column;
+  cursor:          pointer;
+  transform-style: preserve-3d; /* necessário para o efeito 3D do JS */
+  will-change:     transform;
+  transition:      box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.fresh-card:hover {
+  border-color: var(--clr);
+  box-shadow:   0 0 50px -12px var(--clr);
+}
+
+/* ── Área visual (imagem + emojis) ── */
+.fresh-card__visual {
+  position:    relative;
+  height:      260px;
+  overflow:    hidden;
+  flex-shrink: 0;
+}
+.fresh-card__visual-bg { position: absolute; inset: 0; }
+
+.fresh-card__img {
+  position:        relative;
+  z-index:         1;
+  width:           88%;
+  height:          100%;
+  object-fit:      contain;
+  object-position: center bottom;
+  display:         block;
+  margin:          0 auto;
+  transition:      transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter:          drop-shadow(0 16px 32px rgba(0,0,0,0.55));
+}
+.fresh-card:hover .fresh-card__img {
+  transform: scale(1.06) translateY(-6px);
+}
+
+/* Linha colorida separando imagem do corpo */
+.fresh-card__visual::after {
+  content:    '';
+  position:   absolute;
+  bottom: 0; left: 0; right: 0;
+  height:     3px;
+  background: var(--clr);
+  opacity:    0.7;
+  transition: opacity 0.3s;
+  z-index:    3;
+}
+.fresh-card:hover .fresh-card__visual::after { opacity: 1; }
+
+/* Emojis de ingredientes */
+.fresh-card__fruits {
+  position:       absolute;
+  inset:          0;
+  pointer-events: none;
+  z-index:        2;
+}
+.fresh-card__fruits span {
+  position:   absolute;
+  left:       var(--fx, 50%);
+  top:        var(--fy, 20%);
+  font-size:  calc(var(--fs, 1) * 1.5rem);
+  opacity:    0;
+  transform:  scale(0.5) rotate(var(--fr, 0deg));
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  filter:     drop-shadow(0 3px 8px rgba(0,0,0,0.5));
+  animation:  fruit-float var(--fd, 3s) ease-in-out infinite alternate paused;
+}
+
+/* Cada emoji aparece com um pequeno atraso (efeito cascata) */
+.fresh-card__fruits span:nth-child(1) { transition-delay: 0.00s; }
+.fresh-card__fruits span:nth-child(2) { transition-delay: 0.08s; }
+.fresh-card__fruits span:nth-child(3) { transition-delay: 0.16s; }
+.fresh-card__fruits span:nth-child(4) { transition-delay: 0.24s; }
+
+.fresh-card:hover .fresh-card__fruits span {
+  opacity:              1;
+  transform:            scale(1) rotate(var(--fr, 0deg));
+  animation-play-state: running;
+}
+
+/* ── Corpo do card (texto) ── */
+.fresh-card__body {
+  padding:        20px 22px 24px;
+  display:        flex;
+  flex-direction: column;
+  flex:           1;
+}
+
+.fresh-card__top {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-bottom:   14px;
+}
+
+/* Badge colorido (ex: "🌿 FRESH" ou "⭐ DESTAQUE") */
+.fresh-card__badge {
+  font-size:      9px;
+  font-weight:    900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color:          var(--clr);
+  border:         1px solid var(--clr);
+  padding:        3px 10px;
+  border-radius:  var(--radius-pill);
+  background:     rgba(255,255,255,0.03);
+}
+
+.fresh-card__num {
+  font-size:      10px;
+  font-weight:    800;
+  color:          rgba(255,255,255,0.2);
+  letter-spacing: 0.15em;
+}
+
+/* Tags de ingredientes */
+.fresh-card__tags {
+  display:       flex;
+  flex-wrap:     wrap;
+  gap:           5px;
+  margin-bottom: 12px;
+}
+.fresh-card__tags span {
+  background:     rgba(255,255,255,0.05);
+  border:         1px solid rgba(255,255,255,0.1);
+  color:          rgba(255,255,255,0.6);
+  font-size:      10px;
+  font-weight:    700;
+  letter-spacing: 0.04em;
+  padding:        3px 9px;
+  border-radius:  var(--radius-pill);
+  transition:     border-color 0.3s, color 0.3s;
+}
+.fresh-card:hover .fresh-card__tags span {
+  border-color: rgba(255,255,255,0.2);
+  color:        rgba(255,255,255,0.85);
+}
+
+/* Nome */
+.fresh-card__name {
+  font-size:      clamp(20px, 2.2vw, 28px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height:    1;
+  margin-bottom:  8px;
+  transition:     color 0.3s;
+}
+.fresh-card:hover .fresh-card__name { color: var(--clr); }
+
+/* Descrição */
+.fresh-card__desc {
+  font-size:     12px;
+  color:         rgba(255,255,255,0.45);
+  line-height:   1.65;
+  margin-bottom: 18px;
+  flex:          1;
+  transition:    color 0.3s;
+}
+.fresh-card:hover .fresh-card__desc { color: rgba(255,255,255,0.7); }
+
+/* Botão */
+.fresh-card__btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             7px;
+  background:      var(--clr);
+  color:           #000;
+  text-decoration: none;
+  font-size:       10.5px;
+  font-weight:     900;
+  letter-spacing:  0.12em;
+  text-transform:  uppercase;
+  padding:         11px 22px;
+  border-radius:   var(--radius-pill);
+  width:           fit-content;
+  transition:      filter 0.2s, transform 0.2s;
+}
+.fresh-card__btn::after { content: '→'; font-size: 12px; }
+.fresh-card__btn:hover  { filter: brightness(1.12); transform: translateY(-2px); }
+
+/* Card destaque (central): levemente elevado */
+.fresh-card--featured {
+  transform:    translateY(-14px);
+  border-color: rgba(61,220,132,0.18);
+}
+.fresh-card--featured:hover { border-color: var(--clr); }
+
+/* Tagline no final da seção */
+.fresh__tagline {
+  text-align:     center;
+  font-size:      17px;
+  font-weight:    700;
+  color:          rgba(255,255,255,0.45);
+  letter-spacing: 0.02em;
+  margin-top:     48px;
+  position:       relative;
+  z-index:        1;
+}
+.fresh__tagline em { font-style: normal; color: var(--clr-green); }
+
+/* ════════════════════════
+   RESPONSIVO — FRESH
+════════════════════════ */
+
+@media (max-width: 1024px) {
+  .fresh__watermark { font-size: 12vw; }
+}
+
+@media (max-width: 900px) {
+  .fresh__grid          { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fresh-card--featured { transform: none; grid-column: 1 / -1; }
+  .fresh-card--featured .fresh-card__visual { height: 280px; }
+}
+
+@media (max-width: 580px) {
+  .fresh               { padding: 56px 14px 56px; }
+  .fresh__title        { font-size: clamp(32px, 11vw, 52px); }
+  .fresh__watermark    { display: none; }
+  .fresh-card__visual  { height: 230px; }
+  .fresh-card__name    { font-size: clamp(18px, 6vw, 24px); }
+  .fresh-card__body    { padding: 16px 16px 20px; }
+  .fresh__tagline      { margin-top: 32px; font-size: 14px; }
+}
+
+@media (max-width: 560px) {
+  .fresh__grid          { grid-template-columns: 1fr; }
+  .fresh-card--featured { grid-column: auto; }
+  .fresh__tagline       { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .fresh__grid        { gap: 12px; }
+  .fresh-card__visual { height: 210px; }
+  .fresh-card__desc   { font-size: 11px; }
+  .fresh-card__btn    { font-size: 10px; padding: 9px 16px; }
+}

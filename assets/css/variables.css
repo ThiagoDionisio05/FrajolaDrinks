@@ -1,0 +1,30 @@
+/* ══════════════════════════════════════════
+   VARIÁVEIS GLOBAIS (CSS Custom Properties)
+
+   Aqui ficam todas as cores e tamanhos
+   reutilizados em todo o projeto.
+
+   DICA: para mudar a cor vermelha do site
+   inteiro, basta alterar --clr-red aqui!
+══════════════════════════════════════════ */
+
+:root {
+  /* ── Cores principais ── */
+  --clr-red:     #cc0000;   /* vermelho: botões, destaques, navbar  */
+  --clr-green:   #3ddc84;   /* verde: seção fresh (sem álcool)      */
+  --clr-bg:      #000000;   /* fundo principal: preto puro          */
+  --clr-surface: #0d0d0d;   /* superfícies levemente mais claras    */
+
+  /* ── Cores de texto ── */
+  --clr-text:       #ffffff;               /* títulos e textos principais  */
+  --clr-text-muted: #999999;               /* textos secundários           */
+  --clr-text-dim:   rgba(255,255,255,0.38);/* textos bem suaves            */
+
+  /* ── Layout ── */
+  --max-width:     1280px; /* largura máxima do conteúdo            */
+  --navbar-height:   58px; /* altura da barra de navegação          */
+
+  /* ── Arredondamentos ── */
+  --radius-card: 20px; /* bordas dos cards                          */
+  --radius-pill: 50px; /* bordas dos botões e tags (pílula)         */
+}

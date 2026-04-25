@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frajola Drinks</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__container">
+
+      <a href="#" class="navbar__logo">
+        <img src="assets/images/frajola-logo.png" alt="Frajola Drinks" />
+      </a>
+
+      <button class="navbar__hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="navbar__nav" id="nav-menu">
+        <ul class="navbar__links">
+          <li><a href="#"         class="navbar__link navbar__link--active">HOME</a></li>
+          <li><a href="#drinks"   class="navbar__link">DRINKS</a></li>
+          <li><a href="#fresh"    class="navbar__link">FRESH</a></li>
+          <li><a href="#feedbacks" class="navbar__link">FEEDBACKS</a></li>
+          <li><a href="#contato"   class="navbar__link">CONTATO</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <a href="https://www.instagram.com/frajola.drinks" target="_blank" class="navbar__social" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.225 7.15 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+
+        <div class="navbar__divider"></div>
+
+        <a href="https://wa.me/5561999991782" target="_blank" class="navbar__cta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+          </svg>
+          FAÇA SEU PEDIDO
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__container">
+
+      <!-- Coluna esquerda: texto -->
+      <div class="hero__content">
+        <h1 class="hero__title">
+          PARECE<br />SUCO.<br />
+          <span class="hero__title--red">É DRINK.</span>
+          <span class="hero__underline">
+            <svg viewBox="0 0 320 18" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path d="M2 10 C30 6 80 5 140 7 C190 8.5 250 9 318 6 C270 11 200 13 140 12 C80 13.5 35 13 2 14 Z" fill="white" opacity="0.9"/>
+              <path d="M10 12 C60 9 130 8.5 200 10 C250 11 290 10 315 8 C280 12.5 220 14 155 13.5 C90 14.5 45 14 10 15 Z" fill="white" opacity="0.3"/>
+            </svg>
+          </span>
+        </h1>
+        <p class="hero__subtitle">
+          Drinks de qualidade, feitos com
+          <span class="hero__highlight">ingredientes selecionados</span>
+          e muito sabor em cada gole.
+        </p>
+        <div class="hero__buttons">
+          <a href="https://wa.me/5561999991782" target="_blank" class="hero__btn hero__btn--primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            </svg>
+            FAÇA SEU PEDIDO
+          </a>
+          <a href="#" class="hero__btn hero__btn--secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/>
+            </svg>
+            QUERO CONTRATAR<br />PARA UM EVENTO
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna centro: logo -->
+      <div class="hero__logo">
+        <img src="assets/images/frajola-logo.png" alt="Frajola Drinks" />
+      </div>
+
+      <!-- Coluna direita: drinks -->
+      <div class="hero__drinks">
+        <img src="assets/images/herodrinks.png" alt="Drinks Frajola" />
+      </div>
+
+    </div>
+
+    <!-- CTA flutuante sobre os drinks -->
+    <a href="https://wa.me/5561999991782" target="_blank" class="hero__cta-badge">
+      <span class="hero__cta-badge-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+      </span>
+      <span class="hero__cta-badge-text">
+        FAÇA SEU PEDIDO<br /><strong>E SURPREENDA-SE!</strong>
+      </span>
+    </a>
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="features">
+    <div class="features__card">
+
+      <div class="features__grid">
+
+        <div class="features__item">
+          <div class="features__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M5 3h14l-1.5 9H6.5L5 3z"/>
+              <path d="M6.5 12c0 3 2 5 5.5 5s5.5-2 5.5-5"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+              <line x1="9" y1="21" x2="15" y2="21"/>
+              <path d="M8 7h.01M12 7h.01"/>
+              <path d="M9 9.5 Q12 11 15 9.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="features__text">
+            <p class="features__label">DRINKS</p>
+            <p class="features__label features__label--red">DE QUALIDADE</p>
+            <p class="features__desc">Ingredientes selecionados e muito sabor em cada gole.</p>
+          </div>
+        </div>
+
+        <div class="features__divider"></div>
+
+        <div class="features__item">
+          <div class="features__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <polyline points="9,15 11,17 15,13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="features__text">
+            <p class="features__label">ENCOMENDAS</p>
+            <p class="features__label features__label--red">PERSONALIZADAS</p>
+            <p class="features__desc">Faça seu pedido com antecedência e garanta seu drink favorito.</p>
+          </div>
+        </div>
+
+        <div class="features__divider"></div>
+
+        <div class="features__item">
+          <div class="features__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 2 L13.5 7 L19 7 L14.5 10.5 L16 16 L12 13 L8 16 L9.5 10.5 L5 7 L10.5 7 Z" stroke-linejoin="round"/>
+              <path d="M5 20 Q8 17 12 19 Q16 21 19 18" stroke-linecap="round"/>
+              <circle cx="19" cy="5" r="1.5" fill="white" stroke="none"/>
+              <circle cx="5" cy="8" r="1" fill="white" stroke="none"/>
+            </svg>
+          </div>
+          <div class="features__text">
+            <p class="features__label">FESTAS E</p>
+            <p class="features__label features__label--red">EVENTOS</p>
+            <p class="features__desc">Levamos os melhores drinks para o seu evento. É só fechar o contrato!</p>
+          </div>
+        </div>
+
+        <div class="features__divider"></div>
+
+        <div class="features__item">
+          <div class="features__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M8 3 L5 10 Q5 15 8.5 17 L12 19 L15.5 17 Q19 15 19 10 L16 3"/>
+              <line x1="5" y1="10" x2="19" y2="10"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="9" y1="22" x2="15" y2="22"/>
+            </svg>
+          </div>
+          <div class="features__text">
+            <p class="features__label">ATENDEMOS</p>
+            <p class="features__label features__label--red">DIVERSAS OCASIÕES</p>
+            <p class="features__desc">Festas, aniversários, eventos corporativos e muito mais!</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="features__strip">
+      <div class="features__strip-inner">
+
+        <div class="features__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M12 2a3 3 0 0 1 3 3c0 1.5-1 2.5-1 4H10c0-1.5-1-2.5-1-4a3 3 0 0 1 3-3z"/>
+            <line x1="12" y1="9" x2="12" y2="22"/>
+            <line x1="8" y1="22" x2="16" y2="22"/>
+          </svg>
+          FESTAS
+        </div>
+
+        <span class="features__sep">|</span>
+
+        <div class="features__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M9 11 Q12 14 15 11"/>
+            <line x1="12" y1="2" x2="12" y2="4"/>
+          </svg>
+          ANIVERSÁRIOS
+        </div>
+
+        <span class="features__sep">|</span>
+
+        <div class="features__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+          EVENTOS
+        </div>
+
+        <span class="features__sep">|</span>
+
+        <div class="features__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M8 3 L5 10 Q5 15 8.5 17 L12 19 L15.5 17 Q19 15 19 10 L16 3"/>
+            <line x1="5" y1="10" x2="19" y2="10"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+            <line x1="9" y1="22" x2="15" y2="22"/>
+          </svg>
+          CONFRATERNIZAÇÕES
+        </div>
+
+        <span class="features__sep">|</span>
+
+        <div class="features__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+          </svg>
+          E MUITO MAIS!
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Drinks ── -->
+  <section class="drinks" id="drinks">
+
+    <div class="drinks__watermark" aria-hidden="true">DRINKS</div>
+
+    <div class="drinks__header" data-aos="fade-up">
+      <div class="drinks__header-row">
+        <span class="drinks__eyebrow">CARDÁPIO EXCLUSIVO</span>
+        <span class="drinks__count"><em>03</em> drinks</span>
+      </div>
+      <h2 class="drinks__title">NOSSOS <span>DRINKS</span></h2>
+      <div class="drinks__divider"><span></span><span class="drinks__divider-gem">🍹</span><span></span></div>
+      <p class="drinks__subtitle">Cada gole conta uma história. Escolha a sua.</p>
+    </div>
+
+    <!-- Ticker de ingredientes -->
+    <div class="drinks__ticker" aria-hidden="true">
+      <div class="drinks__ticker-track">
+        <span>MORANGO</span><span class="drinks__ticker-dot">·</span>
+        <span>PITAYA</span><span class="drinks__ticker-dot">·</span>
+        <span>LIMÃO</span><span class="drinks__ticker-dot">·</span>
+        <span>MARACUJÁ</span><span class="drinks__ticker-dot">·</span>
+        <span>MANGA</span><span class="drinks__ticker-dot">·</span>
+        <span>SERIGUELA</span><span class="drinks__ticker-dot">·</span>
+        <span>GUARANÁ</span><span class="drinks__ticker-dot">·</span>
+        <span>MATE</span><span class="drinks__ticker-dot">·</span>
+        <span>CACHAÇA</span><span class="drinks__ticker-dot">·</span>
+        <span>RUM</span><span class="drinks__ticker-dot">·</span>
+        <span>VODKA</span><span class="drinks__ticker-dot">·</span>
+        <!-- duplicado para loop contínuo -->
+        <span>MORANGO</span><span class="drinks__ticker-dot">·</span>
+        <span>PITAYA</span><span class="drinks__ticker-dot">·</span>
+        <span>LIMÃO</span><span class="drinks__ticker-dot">·</span>
+        <span>MARACUJÁ</span><span class="drinks__ticker-dot">·</span>
+        <span>MANGA</span><span class="drinks__ticker-dot">·</span>
+        <span>SERIGUELA</span><span class="drinks__ticker-dot">·</span>
+        <span>GUARANÁ</span><span class="drinks__ticker-dot">·</span>
+        <span>MATE</span><span class="drinks__ticker-dot">·</span>
+        <span>CACHAÇA</span><span class="drinks__ticker-dot">·</span>
+        <span>RUM</span><span class="drinks__ticker-dot">·</span>
+        <span>VODKA</span><span class="drinks__ticker-dot">·</span>
+      </div>
+    </div>
+
+    <div class="drinks__grid">
+
+      <!-- Card 1: Frajola -->
+      <div class="drink-card" style="--clr:#e8365d" data-aos="fade-up" data-aos-delay="0">
+        <div class="drink-card__img">
+          <div class="drink-card__img-fallback" style="background:linear-gradient(160deg,#1a0010 0%,#3d0018 60%,#6b0028 100%)"></div>
+          <img src="assets/images/drink-1.png" alt="Drink Frajola" onerror="this.style.display='none'"/>
+        </div>
+        <div class="drink-card__fruits" aria-hidden="true">
+          <span style="--x:8%;--y:18%;--d:2.2s;--s:1.5;--r:-12deg">🍓</span>
+          <span style="--x:72%;--y:8%;--d:3.1s;--s:1.2;--r:8deg">🍋</span>
+          <span style="--x:55%;--y:28%;--d:2.7s;--s:1.0;--r:-5deg">🐉</span>
+          <span style="--x:20%;--y:42%;--d:3.6s;--s:0.85;--r:15deg">🍓</span>
+          <span style="--x:82%;--y:38%;--d:2.4s;--s:0.9;--r:-8deg">🥃</span>
+        </div>
+        <div class="drink-card__glow"></div>
+        <span class="drink-card__num">01</span>
+        <div class="drink-card__content">
+          <div class="drink-card__tags">
+            <span>🍓 Morango</span>
+            <span>🐉 Pitaya</span>
+            <span>🍋 Limão</span>
+            <span>🥃 Cachaça</span>
+          </div>
+          <h3 class="drink-card__name">Frajola</h3>
+          <p class="drink-card__desc">Uma explosão de sabor com morango, pitaya e limão. Leve, tropical e irresistível!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="drink-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Taz Mania -->
+      <div class="drink-card drink-card--featured" style="--clr:#00c896" data-aos="fade-up" data-aos-delay="120">
+        <div class="drink-card__img">
+          <div class="drink-card__img-fallback" style="background:linear-gradient(160deg,#001a12 0%,#003328 60%,#005540 100%)"></div>
+          <img src="assets/images/drink-2.png" alt="Drink Taz Mania" onerror="this.style.display='none'"/>
+        </div>
+        <div class="drink-card__fruits" aria-hidden="true">
+          <span style="--x:10%;--y:12%;--d:2.5s;--s:1.4;--r:10deg">🍊</span>
+          <span style="--x:70%;--y:6%;--d:3.3s;--s:1.1;--r:-6deg">🍋</span>
+          <span style="--x:50%;--y:30%;--d:2.0s;--s:1.3;--r:5deg">🧉</span>
+          <span style="--x:15%;--y:44%;--d:3.8s;--s:0.9;--r:-14deg">⚡</span>
+          <span style="--x:80%;--y:35%;--d:2.6s;--s:0.85;--r:12deg">🍃</span>
+        </div>
+        <div class="drink-card__glow"></div>
+        <span class="drink-card__badge">🏆 MAIS VENDIDO</span>
+        <span class="drink-card__num">02</span>
+        <div class="drink-card__content">
+          <div class="drink-card__tags">
+            <span>🧉 Mate</span>
+            <span>🍊 Maracujá</span>
+            <span>🍋 Limão</span>
+            <span>🥃 Rum Branco</span>
+          </div>
+          <h3 class="drink-card__name">Taz Mania</h3>
+          <p class="drink-card__desc">Mate, maracujá, limão e guaraná com rum branco. Refrescância com atitude!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="drink-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Piu Piu -->
+      <div class="drink-card" style="--clr:#ff9f1c" data-aos="fade-up" data-aos-delay="240">
+        <div class="drink-card__img">
+          <div class="drink-card__img-fallback" style="background:linear-gradient(160deg,#1a0f00 0%,#3d2000 60%,#6b3800 100%)"></div>
+          <img src="assets/images/drink-3.png" alt="Drink Piu Piu" onerror="this.style.display='none'"/>
+        </div>
+        <div class="drink-card__fruits" aria-hidden="true">
+          <span style="--x:12%;--y:10%;--d:2.3s;--s:1.5;--r:-8deg">🥭</span>
+          <span style="--x:68%;--y:7%;--d:3.0s;--s:1.2;--r:10deg">🍊</span>
+          <span style="--x:45%;--y:32%;--d:2.9s;--s:1.0;--r:-4deg">🍑</span>
+          <span style="--x:18%;--y:46%;--d:3.5s;--s:0.9;--r:16deg">🌺</span>
+          <span style="--x:78%;--y:38%;--d:2.1s;--s:0.8;--r:-10deg">🍸</span>
+        </div>
+        <div class="drink-card__glow"></div>
+        <span class="drink-card__num">03</span>
+        <div class="drink-card__content">
+          <div class="drink-card__tags">
+            <span>🍊 Maracujá</span>
+            <span>🥭 Manga</span>
+            <span>🍑 Seriguela</span>
+            <span>🍸 Vodka</span>
+          </div>
+          <h3 class="drink-card__name">Piu Piu</h3>
+          <p class="drink-card__desc">Maracujá, manga e seriguela com vodka. Doce na medida certa e super refrescante!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="drink-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Fresh ── -->
+  <section class="fresh" id="fresh">
+
+    <div class="fresh__watermark" aria-hidden="true">FRESH</div>
+
+    <div class="fresh__particles" aria-hidden="true">
+      <span style="--ax:6%;  --ay:15%; --ad:5.2s; --as:1.6">🍃</span>
+      <span style="--ax:91%; --ay:10%; --ad:7.1s; --as:1.3">🌿</span>
+      <span style="--ax:18%; --ay:78%; --ad:4.8s; --as:1.1">🍓</span>
+      <span style="--ax:80%; --ay:72%; --ad:6.3s; --as:1.4">🥭</span>
+      <span style="--ax:50%; --ay:5%;  --ad:5.9s; --as:0.9">🍋</span>
+      <span style="--ax:33%; --ay:88%; --ad:8.0s; --as:1.2">🍃</span>
+      <span style="--ax:66%; --ay:82%; --ad:4.5s; --as:1.0">🍊</span>
+    </div>
+
+    <div class="fresh__header" data-aos="fade-up">
+      <span class="fresh__eyebrow">🌿 SEM ÁLCOOL</span>
+      <h2 class="fresh__title">FRESH <span>LINE</span></h2>
+      <p class="fresh__subtitle">Refrescantes, leves e cheios de sabor 🍹✨</p>
+    </div>
+
+    <div class="fresh__grid">
+
+      <!-- Card 1: Frajola Fresh -->
+      <div class="fresh-card" style="--clr:#ff4d7a;--clr-bg:#1a0010" data-aos="fade-up" data-aos-delay="0">
+        <div class="fresh-card__visual">
+          <div class="fresh-card__visual-bg" style="background:radial-gradient(ellipse at 50% 80%,#3d0020 0%,#0d000a 70%)"></div>
+          <img src="assets/images/fresh-1.png" alt="Frajola Fresh" class="fresh-card__img" onerror="this.style.display='none'" />
+          <div class="fresh-card__fruits" aria-hidden="true">
+            <span style="--fx:10%;--fy:20%;--fd:2.8s;--fs:1.5;--fr:-10deg">🍓</span>
+            <span style="--fx:78%;--fy:12%;--fd:3.5s;--fs:1.2;--fr:8deg">🍋</span>
+            <span style="--fx:58%;--fy:35%;--fd:2.2s;--fs:1.0;--fr:-5deg">🐉</span>
+            <span style="--fx:22%;--fy:55%;--fd:3.6s;--fs:0.85;--fr:14deg">🍓</span>
+          </div>
+        </div>
+        <div class="fresh-card__body">
+          <div class="fresh-card__top">
+            <span class="fresh-card__badge">🌿 FRESH</span>
+            <span class="fresh-card__num">01</span>
+          </div>
+          <div class="fresh-card__tags">
+            <span>🍓 Morango</span><span>🐉 Pitaya</span><span>🍋 Limão</span>
+          </div>
+          <h3 class="fresh-card__name">Frajola Fresh</h3>
+          <p class="fresh-card__desc">Uma explosão de morango, pitaya e limão. Tropical, leve e simplesmente irresistível!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="fresh-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Fresh Mate (destaque central) -->
+      <div class="fresh-card fresh-card--featured" style="--clr:#3ddc84;--clr-bg:#001a0a" data-aos="fade-up" data-aos-delay="120">
+        <div class="fresh-card__visual">
+          <div class="fresh-card__visual-bg" style="background:radial-gradient(ellipse at 50% 80%,#00472a 0%,#000d05 70%)"></div>
+          <img src="assets/images/fresh-2.png" alt="Fresh Mate" class="fresh-card__img" onerror="this.style.display='none'" />
+          <div class="fresh-card__fruits" aria-hidden="true">
+            <span style="--fx:12%;--fy:18%;--fd:3.2s;--fs:1.4;--fr:6deg">🍊</span>
+            <span style="--fx:75%;--fy:10%;--fd:2.6s;--fs:1.2;--fr:-9deg">🍋</span>
+            <span style="--fx:50%;--fy:38%;--fd:3.8s;--fs:1.1;--fr:4deg">🧉</span>
+            <span style="--fx:84%;--fy:48%;--fd:2.4s;--fs:0.9;--fr:-13deg">⚡</span>
+          </div>
+        </div>
+        <div class="fresh-card__body">
+          <div class="fresh-card__top">
+            <span class="fresh-card__badge">⭐ DESTAQUE</span>
+            <span class="fresh-card__num">02</span>
+          </div>
+          <div class="fresh-card__tags">
+            <span>🧉 Mate</span><span>🍊 Maracujá</span><span>🍋 Limão</span><span>⚡ Guaraná</span>
+          </div>
+          <h3 class="fresh-card__name">Fresh Mate</h3>
+          <p class="fresh-card__desc">A combinação perfeita de mate, maracujá, limão e guaraná. Refrescância que revigora!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="fresh-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+      <!-- Card 3: PiuPiu Fresh -->
+      <div class="fresh-card" style="--clr:#ffbe0b;--clr-bg:#1a1000" data-aos="fade-up" data-aos-delay="240">
+        <div class="fresh-card__visual">
+          <div class="fresh-card__visual-bg" style="background:radial-gradient(ellipse at 50% 80%,#4a3000 0%,#0d0900 70%)"></div>
+          <img src="assets/images/fresh-3.png" alt="PiuPiu Fresh" class="fresh-card__img" onerror="this.style.display='none'" />
+          <div class="fresh-card__fruits" aria-hidden="true">
+            <span style="--fx:14%;--fy:16%;--fd:2.5s;--fs:1.5;--fr:-7deg">🥭</span>
+            <span style="--fx:72%;--fy:8%;--fd:3.7s;--fs:1.2;--fr:11deg">🍊</span>
+            <span style="--fx:54%;--fy:34%;--fd:2.9s;--fs:1.0;--fr:-3deg">🍑</span>
+            <span style="--fx:82%;--fy:50%;--fd:3.3s;--fs:0.85;--fr:9deg">🌺</span>
+          </div>
+        </div>
+        <div class="fresh-card__body">
+          <div class="fresh-card__top">
+            <span class="fresh-card__badge">🌿 FRESH</span>
+            <span class="fresh-card__num">03</span>
+          </div>
+          <div class="fresh-card__tags">
+            <span>🥭 Manga</span><span>🍊 Maracujá</span><span>🍑 Seriguela</span>
+          </div>
+          <h3 class="fresh-card__name">PiuPiu Fresh</h3>
+          <p class="fresh-card__desc">Mistura deliciosa de maracujá, manga e seriguela. Doce na medida e super refrescante!</p>
+          <a href="https://wa.me/5561999991782" target="_blank" class="fresh-card__btn">PEDIR AGORA</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="fresh__tagline" data-aos="fade-up">
+      Parece drink… mas é fresh <em>😏🌿</em>
+    </p>
+
+  </section>
+
+
+  <!-- ── Feedbacks ── -->
+  <section class="feedbacks" id="feedbacks">
+
+    <div class="feedbacks__watermark" aria-hidden="true">FEEDBACKS</div>
+
+    <!-- 1. Cabeçalho -->
+    <div class="feedbacks__header" data-aos="fade-up">
+      <span class="feedbacks__eyebrow">⭐ QUEM PROVOU, APROVOU</span>
+      <h2 class="feedbacks__title">MOMENTOS <span>REAIS</span></h2>
+      <p class="feedbacks__subtitle">Cada gole vira memória. Cada memória vira foto.</p>
+    </div>
+
+    <!-- 2. Stats de credibilidade (números animados) -->
+    <div class="feedbacks__stats" data-aos="fade-up" data-aos-delay="80">
+
+      <div class="feedbacks__stat">
+        <p class="feedbacks__stat-num">
+          <span class="feedbacks__counter" data-target="500">0</span><sup>+</sup>
+        </p>
+        <p class="feedbacks__stat-label">Pedidos entregues</p>
+      </div>
+
+      <div class="feedbacks__stat-sep"></div>
+
+      <div class="feedbacks__stat">
+        <p class="feedbacks__stat-num">
+          <span class="feedbacks__counter" data-target="4">0</span>
+        </p>
+        <p class="feedbacks__stat-label">Eventos marcados</p>
+      </div>
+
+      <div class="feedbacks__stat-sep"></div>
+
+      <div class="feedbacks__stat">
+        <p class="feedbacks__stat-num">
+          <span class="feedbacks__counter" data-target="100">0</span><sup>%</sup>
+        </p>
+        <p class="feedbacks__stat-label">De satisfação</p>
+      </div>
+
+      <div class="feedbacks__stat-sep"></div>
+
+      <div class="feedbacks__stat">
+        <p class="feedbacks__stat-num">
+          <span class="feedbacks__counter" data-target="3">0</span>
+        </p>
+        <p class="feedbacks__stat-label">Anos de experiência</p>
+      </div>
+
+    </div>
+
+    <!-- 3. Mural de fotos -->
+    <div class="feedbacks__mural">
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/images/feedback1.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="40">
+        <img src="assets/images/feedback2.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="80">
+        <img src="assets/images/feedback3.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="120">
+        <img src="assets/images/feedback4.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/images/feedback5.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="40">
+        <img src="assets/images/feedback6.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="80">
+        <img src="assets/images/feedback7.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="120">
+        <img src="assets/images/feedback8.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/images/feedback9.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="40">
+        <img src="assets/images/feedback10.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="80">
+        <img src="assets/images/feedback11.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+      <div class="feedback-photo" data-aos="fade-up" data-aos-delay="120">
+        <img src="assets/images/feedback12.png" alt="Momento Frajola" loading="lazy" />
+        <div class="feedback-photo__overlay"><span class="feedback-photo__tag">🍹 Frajola Drinks</span></div>
+      </div>
+
+    </div>
+
+    <!-- 4. Timeline de eventos -->
+    <div class="feedbacks__events-section" data-aos="fade-up">
+
+      <div class="feedbacks__events-header">
+        <h3 class="feedbacks__events-title">📍 ONDE JÁ MARCAMOS PRESENÇA</h3>
+        <p class="feedbacks__events-sub">
+          Levamos drinks de qualidade em cada evento especial.<br />
+          Acompanhe o Instagram e saiba onde vamos estar!
+        </p>
+      </div>
+
+      <div class="feedbacks__timeline">
+
+        <!-- Linha conectando os eventos (decorativa, feita em CSS) -->
+        <div class="feedbacks__timeline-line" aria-hidden="true"></div>
+
+        <!-- Parada 1: Feira da Lua -->
+        <div class="event-stop" data-aos="zoom-in" data-aos-delay="0">
+          <div class="event-stop__pin">🌙</div>
+          <div class="event-stop__info">
+            <p class="event-stop__name">Feira da Lua</p>
+            <p class="event-stop__year">2026</p>
+            <span class="event-stop__badge">✓ Estivemos lá</span>
+          </div>
+        </div>
+
+        <!-- Parada 2: Feira do CABV -->
+        <div class="event-stop" data-aos="zoom-in" data-aos-delay="100">
+          <div class="event-stop__pin">🎪</div>
+          <div class="event-stop__info">
+            <p class="event-stop__name">Feira do CABV</p>
+            <p class="event-stop__year">2026</p>
+            <span class="event-stop__badge">✓ Estivemos lá</span>
+          </div>
+        </div>
+
+        <!-- Parada 3: Samba no Eixo -->
+        <div class="event-stop" data-aos="zoom-in" data-aos-delay="200">
+          <div class="event-stop__pin">🥁</div>
+          <div class="event-stop__info">
+            <p class="event-stop__name">Samba no Eixo</p>
+            <p class="event-stop__year">2026</p>
+            <span class="event-stop__badge">✓ Estivemos lá</span>
+          </div>
+        </div>
+
+        <!-- Parada 4: Carnaval 2026 -->
+        <div class="event-stop" data-aos="zoom-in" data-aos-delay="300">
+          <div class="event-stop__pin">🎭</div>
+          <div class="event-stop__info">
+            <p class="event-stop__name">Carnaval 2026</p>
+            <p class="event-stop__year">2026</p>
+            <span class="event-stop__badge">✓ Estivemos lá</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 5. CTA Instagram -->
+    <div class="feedbacks__cta" data-aos="fade-up">
+      <div class="feedbacks__cta-inner">
+
+        <div class="feedbacks__cta-text">
+          <span class="feedbacks__cta-eyebrow">🗺️ ACOMPANHE NOSSOS PRÓXIMOS EVENTOS</span>
+          <p class="feedbacks__cta-handle">@frajola_drinks</p>
+          <p class="feedbacks__cta-desc">
+            Todo evento, todo lugar, toda memória — antes de todo mundo.<br />
+            Segue lá e não perde onde a Frajola vai estar!
+          </p>
+        </div>
+
+        <a href="https://www.instagram.com/frajola.drinks" target="_blank" class="feedbacks__cta-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.225 7.15 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+          SEGUIR NO INSTAGRAM
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ── Contato / Footer ── -->
+  <footer class="contato" id="contato">
+
+    <!-- 1. CTA principal -->
+    <div class="contato__cta">
+
+      <div class="contato__watermark" aria-hidden="true">CONTATO</div>
+
+      <div class="contato__cta-content" data-aos="fade-up">
+
+        <span class="contato__eyebrow">📱 BORA FAZER SEU PEDIDO?</span>
+
+        <h2 class="contato__title">
+          FALE COM<br />
+          o <span>FRAJOLA</span>
+        </h2>
+
+        <p class="contato__desc">
+          Pedidos, encomendas ou quer nos ter no seu evento?<br />
+          É só chamar — respondemos rápido!
+        </p>
+
+        <div class="contato__btns">
+
+          <!-- Botão principal: WhatsApp -->
+          <a href="https://wa.me/5561999991782" target="_blank" class="contato__btn contato__btn--whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            </svg>
+            FAÇA SEU PEDIDO
+          </a>
+
+          <!-- Botão secundário: Instagram -->
+          <a href="https://www.instagram.com/frajola.drinks" target="_blank" class="contato__btn contato__btn--instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.225 7.15 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            @frajola_drinks
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Barra do footer -->
+    <div class="contato__foot">
+      <div class="contato__foot-inner">
+
+        <!-- Logo -->
+        <a href="#" class="contato__foot-logo">
+          <img src="assets/images/frajola-logo.png" alt="Frajola Drinks" />
+        </a>
+
+        <!-- Links de navegação -->
+        <nav class="contato__foot-nav" aria-label="Navegação do rodapé">
+          <a href="#">HOME</a>
+          <a href="#drinks">DRINKS</a>
+          <a href="#fresh">FRESH</a>
+          <a href="#feedbacks">FEEDBACKS</a>
+          <a href="#contato">CONTATO</a>
+        </nav>
+
+        <!-- Créditos -->
+        <div class="contato__foot-meta">
+          <p class="contato__foot-copy">© 2026 Frajola Drinks. Todos os direitos reservados.</p>
+          <p class="contato__foot-dev">
+            Desenvolvido por <a href="https://www.instagram.com/dionisio.dev._" target="_blank">dionisio.dev</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- Bibliotecas externas (devem vir antes dos nossos scripts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Scripts do projeto -->
+  <script src="assets/js/navbar.js"></script>      <!-- menu hambúrguer          -->
+  <script src="assets/js/animations.js"></script>  <!-- animações de scroll      -->
+  <script src="assets/js/cards.js"></script>       <!-- efeito 3D nos cards      -->
+  <script src="assets/js/feedbacks.js"></script>   <!-- contador animado         -->
+</body>
+</html>

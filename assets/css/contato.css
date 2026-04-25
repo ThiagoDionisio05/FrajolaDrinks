@@ -1,0 +1,276 @@
+/* ══════════════════════════════════════════
+   CONTATO + FOOTER
+
+   Seção final da página, dividida em 2 partes:
+
+   1. contato__cta  → chamada para ação
+      (WhatsApp + Instagram)
+   2. contato__foot → barra do footer
+      (logo, links, créditos)
+══════════════════════════════════════════ */
+
+/* ════════════════════════
+   WRAPPER GERAL
+════════════════════════ */
+
+.contato {
+  background:  var(--clr-bg);
+  position:    relative;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════
+   1. ÁREA DE CTA
+════════════════════════ */
+
+.contato__cta {
+  position:  relative;
+  padding:   100px 24px 90px;
+  overflow:  hidden;
+  text-align: center;
+}
+
+/* Gradiente decorativo no topo (continuidade com a seção anterior) */
+.contato__cta::before {
+  content:    '';
+  position:   absolute;
+  top: -120px; left: 50%;
+  transform:  translateX(-50%);
+  width:      700px;
+  height:     350px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(204,0,0,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Watermark de fundo */
+.contato__watermark {
+  position:       absolute;
+  top: 50%; left: 50%;
+  transform:      translate(-50%, -50%);
+  font-size:      clamp(60px, 14vw, 180px);
+  font-weight:    900;
+  color:          rgba(204,0,0,0.03);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space:    nowrap;
+  pointer-events: none;
+  user-select:    none;
+  z-index: 0;
+}
+
+/* Conteúdo centralizado */
+.contato__cta-content {
+  position:  relative;
+  z-index:   1;
+  max-width: 680px;
+  margin:    0 auto;
+}
+
+/* Eyebrow tag */
+.contato__eyebrow {
+  display:     inline-flex;
+  align-items: center;
+  gap:         6px;
+  font-size:   10px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color:       var(--clr-red);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border:        1px solid rgba(204,0,0,0.35);
+  padding:       6px 18px;
+  border-radius: var(--radius-pill);
+  background:    rgba(204,0,0,0.07);
+}
+
+/* Título principal */
+.contato__title {
+  font-size:      clamp(42px, 7vw, 88px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height:    0.9;
+}
+.contato__title span { color: var(--clr-red); }
+
+/* Descrição */
+.contato__desc {
+  margin-top:  20px;
+  font-size:   14px;
+  color:       rgba(255,255,255,0.42);
+  line-height: 1.8;
+}
+
+/* ── Botões de ação ── */
+.contato__btns {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             14px;
+  margin-top:      36px;
+  flex-wrap:       wrap;
+}
+
+/* Estilo base dos botões */
+.contato__btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             10px;
+  text-decoration: none;
+  font-size:       12px;
+  font-weight:     900;
+  letter-spacing:  0.1em;
+  text-transform:  uppercase;
+  padding:         16px 28px;
+  border-radius:   var(--radius-pill);
+  transition:      filter 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space:     nowrap;
+}
+.contato__btn:hover {
+  filter:    brightness(1.12);
+  transform: translateY(-2px);
+}
+
+/* Botão primário: WhatsApp */
+.contato__btn--whatsapp {
+  background: var(--clr-red);
+  color:      #fff;
+  box-shadow: 0 0 0 0 rgba(204,0,0,0);
+}
+.contato__btn--whatsapp:hover {
+  box-shadow: 0 8px 32px -6px rgba(204,0,0,0.55);
+}
+
+/* Botão secundário: Instagram (contorno) */
+.contato__btn--instagram {
+  background: transparent;
+  color:      #fff;
+  border:     2px solid rgba(255,255,255,0.25);
+}
+.contato__btn--instagram:hover {
+  border-color: rgba(255,255,255,0.55);
+  background:   rgba(255,255,255,0.05);
+}
+
+/* ════════════════════════
+   2. BARRA DO FOOTER
+════════════════════════ */
+
+.contato__foot {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  background: #050505;
+  padding:    32px 24px;
+}
+
+.contato__foot-inner {
+  max-width:   var(--max-width);
+  margin:      0 auto;
+  display:     grid;
+  /* 3 colunas: logo | links | créditos */
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap:         24px;
+}
+
+/* Logo no footer */
+.contato__foot-logo img {
+  height:     36px;
+  width:      auto;
+  display:    block;
+  opacity:    0.8;
+  transition: opacity 0.2s;
+}
+.contato__foot-logo:hover img { opacity: 1; }
+
+/* Links de navegação centralizados */
+.contato__foot-nav {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             24px;
+  flex-wrap:       wrap;
+}
+
+.contato__foot-nav a {
+  text-decoration: none;
+  font-size:       11px;
+  font-weight:     700;
+  color:           rgba(255,255,255,0.3);
+  letter-spacing:  0.08em;
+  text-transform:  uppercase;
+  transition:      color 0.2s;
+}
+.contato__foot-nav a:hover { color: rgba(255,255,255,0.8); }
+
+/* Créditos à direita */
+.contato__foot-meta {
+  text-align: right;
+  display:    flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contato__foot-copy {
+  font-size:      10px;
+  font-weight:    600;
+  color:          rgba(255,255,255,0.22);
+  letter-spacing: 0.06em;
+}
+
+/* Crédito do desenvolvedor */
+.contato__foot-dev {
+  font-size:      10px;
+  font-weight:    600;
+  color:          rgba(255,255,255,0.22);
+  letter-spacing: 0.04em;
+}
+
+.contato__foot-dev a {
+  color:           rgba(204,0,0,0.75);
+  text-decoration: none;
+  font-weight:     800;
+  transition:      color 0.2s;
+}
+.contato__foot-dev a:hover { color: var(--clr-red); }
+
+/* ════════════════════════
+   RESPONSIVO — CONTATO
+════════════════════════ */
+
+@media (max-width: 900px) {
+  .contato__cta { padding: 72px 24px 64px; }
+}
+
+@media (max-width: 768px) {
+  /* Footer vira coluna única centralizada */
+  .contato__foot-inner {
+    grid-template-columns: 1fr;
+    text-align:   center;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .contato__foot-logo img { margin: 0 auto; }
+
+  .contato__foot-meta { text-align: center; }
+}
+
+@media (max-width: 580px) {
+  .contato__cta { padding: 60px 14px 52px; }
+
+  .contato__btn { padding: 14px 22px; font-size: 11px; }
+  .contato__btns { gap: 10px; }
+
+  .contato__foot { padding: 28px 14px; }
+  .contato__foot-nav { gap: 14px; }
+}
+
+@media (max-width: 480px) {
+  /* Botões em coluna */
+  .contato__btns       { flex-direction: column; align-items: center; }
+  .contato__btn        { width: 100%; max-width: 320px; justify-content: center; }
+  .contato__foot-nav   { gap: 10px; }
+  .contato__foot-nav a { font-size: 10px; }
+}

@@ -1,0 +1,431 @@
+/* ══════════════════════════════════════════
+   DRINKS (CARDÁPIO COM ÁLCOOL)
+
+   Grid de 3 cards com efeitos no hover:
+   → imagem cresce levemente
+   → emojis de ingredientes aparecem flutuando
+   → nome muda de cor para a cor do drink
+   → descrição e botão sobem do rodapé
+   → brilho colorido aparece no rodapé
+   → efeito 3D de inclinação (aplicado pelo JS)
+══════════════════════════════════════════ */
+
+.drinks {
+  background:  var(--clr-bg);
+  padding:     80px 24px 100px;
+  overflow:    hidden;
+  flex-shrink: 0;
+  position:    relative;
+}
+
+/* Texto gigante decorativo no fundo */
+.drinks__watermark {
+  position:       absolute;
+  top: 50%; left: 50%;
+  transform:      translate(-50%, -50%);
+  font-size:      clamp(80px, 18vw, 220px);
+  font-weight:    900;
+  color:          rgba(255,255,255,0.025);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select:    none;
+  white-space:    nowrap;
+  z-index: 0;
+}
+
+/* ── Cabeçalho ── */
+.drinks__header {
+  text-align:   center;
+  margin-bottom: 32px;
+  position:     relative;
+  z-index:      1;
+  max-width:    var(--max-width);
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.drinks__header-row {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-bottom:   14px;
+}
+
+.drinks__eyebrow {
+  font-size:      10px;
+  font-weight:    800;
+  letter-spacing: 0.3em;
+  color:          var(--clr-red);
+  text-transform: uppercase;
+}
+
+.drinks__count {
+  font-size:      11px;
+  font-weight:    600;
+  color:          rgba(255,255,255,0.25);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.drinks__count em {
+  font-style:  normal;
+  color:       rgba(255,255,255,0.55);
+  font-weight: 800;
+}
+
+.drinks__title {
+  font-size:      clamp(38px, 5.5vw, 72px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height:    0.95;
+}
+.drinks__title span { color: var(--clr-red); }
+
+/* Linha decorativa com emoji */
+.drinks__divider {
+  display:     flex;
+  align-items: center;
+  gap:         14px;
+  margin:      18px auto 16px;
+  max-width:   320px;
+}
+.drinks__divider span:not(.drinks__divider-gem) {
+  flex:       1;
+  height:     1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+}
+.drinks__divider-gem { font-size: 16px; line-height: 1; }
+
+.drinks__subtitle {
+  font-size:      13px;
+  color:          var(--clr-text-dim);
+  font-weight:    500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Ticker de ingredientes (faixa que rola infinitamente) ── */
+.drinks__ticker {
+  overflow: hidden;
+  margin:   28px 0 52px;
+  /* fade nas bordas esquerda e direita */
+  mask-image:          linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image:  linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.drinks__ticker-track {
+  display:        flex;
+  gap:            20px;
+  width:          max-content;
+  animation:      ticker 22s linear infinite;
+  font-size:      11px;
+  font-weight:    800;
+  letter-spacing: 0.18em;
+  color:          rgba(255,255,255,0.18);
+  text-transform: uppercase;
+}
+.drinks__ticker-dot { color: var(--clr-red); opacity: 0.6; }
+
+/* Animação de rolagem: move para a esquerda até a metade (onde o conteúdo se repete) */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Grid de cards ── */
+.drinks__grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   20px;
+  max-width:             var(--max-width);
+  margin:                0 auto;
+  position:              relative;
+  z-index:               1;
+}
+
+/* ─────────────────────────────────────────
+   DRINK CARD
+
+   Estrutura de camadas (de baixo para cima):
+   z-index 0 → brilho (glow)
+   z-index 1 → imagem de fundo
+   z-index 2 → gradiente escuro (rodapé)
+   z-index 3 → emojis flutuantes
+   z-index 5 → número, badge, conteúdo
+───────────────────────────────────────── */
+.drink-card {
+  position:        relative;
+  border-radius:   var(--radius-card);
+  overflow:        hidden;
+  height:          480px;
+  cursor:          pointer;
+  transform-style: preserve-3d; /* necessário para o efeito 3D do JS */
+  will-change:     transform;
+  transition:      box-shadow 0.4s ease;
+  /* --clr vem do style="" inline de cada card no HTML */
+  box-shadow: inset 0 5px 0 0 var(--clr), 0 0 0 0 var(--clr);
+}
+.drink-card:hover {
+  box-shadow: inset 0 5px 0 0 var(--clr), 0 0 55px -8px var(--clr);
+}
+
+/* Imagem centralizada no card */
+.drink-card__img {
+  position:        absolute;
+  inset:           0;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  overflow:        hidden;
+}
+.drink-card__img-fallback { position: absolute; inset: 0; }
+
+.drink-card__img img {
+  position:        relative;
+  z-index:         1;
+  width:           90%;
+  height:          90%;
+  object-fit:      contain;
+  object-position: center 30%;
+  display:         block;
+  transition:      transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter:          drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+}
+.drink-card:hover .drink-card__img img {
+  transform: scale(1.06) translateY(-6px);
+}
+
+/* Gradiente que escurece o rodapé para o texto ser legível */
+.drink-card::before {
+  content:    '';
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.98)  0%,
+    rgba(0,0,0,0.75) 30%,
+    rgba(0,0,0,0.15) 60%,
+    transparent      100%
+  );
+  z-index:    2;
+  transition: opacity 0.4s;
+}
+
+/* Emojis de ingredientes (aparecem ao hover) */
+.drink-card__fruits {
+  position:       absolute;
+  inset:          0;
+  z-index:        3;
+  pointer-events: none;
+}
+.drink-card__fruits span {
+  position:   absolute;
+  left:       var(--x, 50%);
+  top:        var(--y, 20%);
+  font-size:  calc(var(--s, 1) * 1.7rem);
+  opacity:    0;
+  transform:  translateY(0) rotate(var(--r, 0deg)) scale(0.7);
+  filter:     drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  animation:  fruit-float var(--d, 3s) ease-in-out infinite alternate paused;
+}
+.drink-card:hover .drink-card__fruits span {
+  opacity:              1;
+  transform:            translateY(0) rotate(var(--r, 0deg)) scale(1);
+  animation-play-state: running;
+}
+
+/* Cada emoji aparece com um pequeno atraso (efeito cascata) */
+.drink-card__fruits span:nth-child(1) { transition-delay: 0.00s; }
+.drink-card__fruits span:nth-child(2) { transition-delay: 0.07s; }
+.drink-card__fruits span:nth-child(3) { transition-delay: 0.14s; }
+.drink-card__fruits span:nth-child(4) { transition-delay: 0.21s; }
+.drink-card__fruits span:nth-child(5) { transition-delay: 0.28s; }
+
+@keyframes fruit-float {
+  from { transform: translateY(0px)   rotate(var(--r, 0deg)) scale(1);    }
+  to   { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 8deg)) scale(1.05); }
+}
+
+/* Brilho colorido no rodapé (aparece ao hover) */
+.drink-card__glow {
+  position:      absolute;
+  bottom:        -20px;
+  left: 10%; right: 10%;
+  height:        120px;
+  background:    var(--clr);
+  filter:        blur(50px);
+  opacity:       0;
+  z-index:       0;
+  transition:    opacity 0.5s ease;
+  border-radius: 50%;
+}
+.drink-card:hover .drink-card__glow { opacity: 0.35; }
+
+/* Número identificador no canto superior esquerdo */
+.drink-card__num {
+  position:       absolute;
+  top: 20px; left: 22px;
+  font-size:      10px;
+  font-weight:    800;
+  color:          rgba(255,255,255,0.28);
+  letter-spacing: 0.18em;
+  z-index:        5;
+  pointer-events: none;
+  transition:     color 0.3s;
+}
+.drink-card:hover .drink-card__num { color: rgba(255,255,255,0.55); }
+
+/* Badge "Mais vendido" no canto superior direito */
+.drink-card__badge {
+  position:       absolute;
+  top: 14px; right: 16px;
+  background:     var(--clr);
+  color:          #fff;
+  font-size:      9px;
+  font-weight:    900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding:        5px 12px;
+  border-radius:  var(--radius-pill);
+  z-index:        5;
+  box-shadow:     0 2px 12px rgba(0,0,0,0.4);
+}
+
+/* Área de conteúdo no rodapé do card */
+.drink-card__content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding:  24px 22px 26px;
+  z-index:  5;
+}
+
+/* Tags de ingredientes */
+.drink-card__tags {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        5px;
+  margin-bottom: 12px;
+  opacity:    0.6;
+  transition: opacity 0.3s ease;
+}
+.drink-card:hover .drink-card__tags { opacity: 1; }
+
+.drink-card__tags span {
+  background:     rgba(255,255,255,0.1);
+  border:         1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  color:          #fff;
+  font-size:      10px;
+  font-weight:    700;
+  letter-spacing: 0.05em;
+  padding:        4px 10px;
+  border-radius:  var(--radius-pill);
+}
+
+/* Nome do drink */
+.drink-card__name {
+  font-size:      clamp(26px, 2.5vw, 36px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height:    1;
+  margin-bottom:  10px;
+  transition:     color 0.3s;
+}
+.drink-card:hover .drink-card__name { color: var(--clr); }
+
+/* Descrição: escondida, revela ao hover com animação */
+.drink-card__desc {
+  font-size:   12px;
+  color:       rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-height:  0;
+  overflow:    hidden;
+  opacity:     0;
+  transition:  max-height 0.45s ease, opacity 0.35s ease 0.05s;
+}
+.drink-card:hover .drink-card__desc { max-height: 80px; opacity: 1; }
+
+/* Botão: escondido, sobe ao hover */
+.drink-card__btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             8px;
+  background:      var(--clr);
+  color:           #fff;
+  text-decoration: none;
+  font-size:       11px;
+  font-weight:     900;
+  letter-spacing:  0.12em;
+  text-transform:  uppercase;
+  padding:         11px 22px;
+  border-radius:   var(--radius-pill);
+  opacity:         0;
+  transform:       translateY(8px);
+  transition:      opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s, filter 0.2s;
+}
+.drink-card__btn::after          { content: '→'; font-size: 13px; }
+.drink-card:hover .drink-card__btn { opacity: 1; transform: translateY(0); }
+.drink-card__btn:hover           { filter: brightness(1.15); }
+
+/* Card destaque (central): levemente elevado */
+.drink-card--featured { transform: translateY(-16px); }
+.drink-card--featured::after {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  border-radius: var(--radius-card);
+  border:        1.5px solid rgba(255,255,255,0.1);
+  pointer-events: none;
+  z-index:       4;
+}
+
+/* ════════════════════════
+   RESPONSIVO — DRINKS
+════════════════════════ */
+
+@media (max-width: 1024px) {
+  .drinks__count     { display: none; }
+  .drinks__watermark { font-size: 14vw; }
+}
+
+@media (max-width: 900px) {
+  .drinks__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .drink-card--featured { transform: none; grid-column: 1 / -1; height: 380px; }
+  .drink-card           { height: 360px; }
+  .drinks__header       { text-align: center; }
+  .drinks__header-row   { justify-content: center; gap: 0; }
+  .drinks__header-row .drinks__eyebrow { text-align: center; }
+}
+
+@media (max-width: 580px) {
+  .drinks               { padding: 56px 14px 72px; }
+  .drinks__ticker       { margin: 16px 0 32px; }
+  .drinks__title        { font-size: clamp(32px, 11vw, 52px); }
+  .drinks__watermark    { display: none; }
+  .drink-card           { height: 380px; }
+  .drink-card__name     { font-size: clamp(22px, 7vw, 32px); }
+  .drink-card__content  { padding: 18px 18px 22px; }
+}
+
+@media (max-width: 560px) {
+  .drinks__grid         { grid-template-columns: 1fr; gap: 16px; }
+  .drink-card           { height: 380px; }
+  .drink-card--featured { height: 400px; }
+}
+
+@media (max-width: 480px) {
+  .drinks__grid         { gap: 12px; }
+  .drink-card           { height: 360px; }
+  .drink-card__img img  { width: 85%; height: 85%; }
+  .drinks__subtitle     { display: none; }
+}
+
+@media (max-width: 380px) {
+  .drink-card { height: 340px; }
+}

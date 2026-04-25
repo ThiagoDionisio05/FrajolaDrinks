@@ -1,0 +1,619 @@
+/* ══════════════════════════════════════════
+   FEEDBACKS — MOMENTOS REAIS
+
+   Seção dividida em 4 blocos:
+   1. Header + Stats de credibilidade
+   2. Mural de fotos (grade 4 colunas)
+   3. Timeline de eventos onde estivemos
+   4. CTA para seguir o Instagram
+══════════════════════════════════════════ */
+
+.feedbacks {
+  background:  var(--clr-bg);
+  padding:     90px 24px 100px;
+  overflow:    hidden;
+  position:    relative;
+  flex-shrink: 0;
+}
+
+/* Texto gigante decorativo no fundo (levemente avermelhado) */
+.feedbacks__watermark {
+  position:       absolute;
+  top: 50%; left: 50%;
+  transform:      translate(-50%, -50%);
+  font-size:      clamp(50px, 10vw, 140px);
+  font-weight:    900;
+  color:          rgba(204,0,0,0.03);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select:    none;
+  white-space:    nowrap;
+  z-index: 0;
+}
+
+/* ════════════════════════
+   1. CABEÇALHO
+════════════════════════ */
+
+.feedbacks__header {
+  text-align:    center;
+  margin-bottom: 48px;
+  position:      relative;
+  z-index:       1;
+  max-width:     var(--max-width);
+  margin-left:   auto;
+  margin-right:  auto;
+}
+
+/* Tag acima do título (ex: "⭐ QUEM PROVOU, APROVOU") */
+.feedbacks__eyebrow {
+  display:     inline-flex;
+  align-items: center;
+  gap:         6px;
+  font-size:   10px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color:       var(--clr-red);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  border:        1px solid rgba(204,0,0,0.35);
+  padding:       6px 18px;
+  border-radius: var(--radius-pill);
+  background:    rgba(204,0,0,0.07);
+}
+
+.feedbacks__title {
+  font-size:      clamp(38px, 5.5vw, 72px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height:    0.95;
+}
+.feedbacks__title span { color: var(--clr-red); }
+
+.feedbacks__subtitle {
+  margin-top:     14px;
+  font-size:      12px;
+  color:          rgba(255,255,255,0.35);
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ════════════════════════
+   2. STATS DE CREDIBILIDADE
+   Números que contam ao entrar na tela.
+   (a animação fica em feedbacks.js)
+════════════════════════ */
+
+.feedbacks__stats {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  max-width:       860px;
+  margin:          0 auto 72px;
+  padding:         32px 0;
+  border-top:    1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position:        relative;
+  z-index:         1;
+  flex-wrap:       wrap;
+  gap: 8px 0;
+}
+
+.feedbacks__stat {
+  text-align: center;
+  flex:       1;
+  min-width:  140px;
+  padding:    0 12px;
+}
+
+/* Número grande */
+.feedbacks__stat-num {
+  font-size:      clamp(32px, 4.5vw, 54px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  letter-spacing: -0.02em;
+  line-height:    1;
+  display:        flex;
+  align-items:    flex-start;
+  justify-content: center;
+  gap:            2px;
+}
+
+/* O número em si fica em vermelho */
+.feedbacks__counter { color: var(--clr-red); }
+
+/* O "+" ou "%" fica menor e sobe um pouco */
+.feedbacks__stat-num sup {
+  font-size:   0.45em;
+  margin-top:  6px;
+  font-weight: 900;
+  color:       rgba(255,255,255,0.55);
+}
+
+.feedbacks__stat-label {
+  margin-top:     8px;
+  font-size:      10px;
+  font-weight:    700;
+  color:          rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Divisor vertical entre os stats */
+.feedbacks__stat-sep {
+  width:      1px;
+  height:     48px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ════════════════════════
+   3. MURAL DE FOTOS
+   Grade de 4 colunas com fotos quadradas.
+   No hover: foto ilumina, borda vermelha aparece
+   e uma tag sobe do rodapé.
+════════════════════════ */
+
+.feedbacks__mural {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   6px;
+  max-width:             var(--max-width);
+  margin:                0 auto 90px;
+  position:              relative;
+  z-index:               1;
+}
+
+/* Container de cada foto */
+.feedback-photo {
+  position:     relative;
+  aspect-ratio: 1 / 1;
+  overflow:     hidden;
+  border-radius: 6px;
+  cursor:       pointer;
+  background:   #111;
+}
+
+.feedback-photo img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+  transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94),
+              filter 0.4s ease;
+  /* levemente escura e dessaturada por padrão — cria contraste no hover */
+  filter: brightness(0.72) saturate(0.75);
+}
+
+/* Hover: foto acende e cresce */
+.feedback-photo:hover img {
+  transform: scale(1.1);
+  filter:    brightness(1) saturate(1.05);
+}
+
+/* Borda vermelha que aparece no hover (usando box-shadow interno) */
+.feedback-photo::before {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  border-radius: 6px;
+  box-shadow:    inset 0 0 0 3px var(--clr-red);
+  opacity:       0;
+  transition:    opacity 0.3s ease;
+  z-index:       2;
+  pointer-events: none;
+}
+.feedback-photo:hover::before { opacity: 1; }
+
+/* Overlay: gradiente escuro no rodapé com a tag */
+.feedback-photo__overlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
+  display:    flex;
+  align-items: flex-end;
+  padding:    12px;
+  opacity:    0;
+  transform:  translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index:    2;
+}
+.feedback-photo:hover .feedback-photo__overlay {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* Tag "🍹 Frajola Drinks" */
+.feedback-photo__tag {
+  font-size:   9.5px;
+  font-weight: 800;
+  color:       #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background:  var(--clr-red);
+  padding:     4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+/* ════════════════════════
+   4. TIMELINE DE EVENTOS
+   Linha do tempo horizontal mostrando
+   onde a Frajola já esteve. O conceito:
+   uma "jornada" de eventos conectados.
+════════════════════════ */
+
+.feedbacks__events-section {
+  max-width: var(--max-width);
+  margin:    0 auto 90px;
+  position:  relative;
+  z-index:   1;
+}
+
+/* Cabeçalho da timeline */
+.feedbacks__events-header {
+  text-align:    center;
+  margin-bottom: 56px;
+}
+
+.feedbacks__events-title {
+  font-size:      clamp(16px, 2vw, 22px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.feedbacks__events-sub {
+  margin-top:  10px;
+  font-size:   12px;
+  color:       rgba(255,255,255,0.38);
+  line-height: 1.7;
+  max-width:   540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container da timeline — usa flex horizontal */
+.feedbacks__timeline {
+  display:    flex;
+  align-items: flex-start;
+  position:   relative;
+  padding:    0 40px;
+}
+
+/* Linha conectando os eventos (vermelha → verde no final, indicando "passado → futuro") */
+.feedbacks__timeline-line {
+  position:   absolute;
+  /* centralizada verticalmente com o pin (pin = 108px, centro = 54px) */
+  top:        54px;
+  left:       calc(40px + 12.5%);  /* começa no centro do 1º pin */
+  right:      calc(40px + 12.5%);  /* termina no centro do 4º pin */
+  height:     2px;
+  background: linear-gradient(
+    to right,
+    var(--clr-red)   0%,
+    var(--clr-red)  70%,
+    var(--clr-green) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Cada parada na jornada */
+.event-stop {
+  flex:           1;
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            16px;
+  position:       relative;
+  z-index:        1;
+}
+
+/* Círculo com ícone (o "pin" do evento) */
+.event-stop__pin {
+  width:           108px;
+  height:          108px;
+  border-radius:   50%;
+  background:      #0d0d0d;
+  border:          2.5px solid var(--clr-red);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       40px;
+  transition:      transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  position:        relative;
+  flex-shrink:     0;
+}
+
+/* Anel externo suave atrás do pin */
+.event-stop__pin::before {
+  content:       '';
+  position:      absolute;
+  inset:         -8px;
+  border-radius: 50%;
+  border:        1px dashed rgba(204,0,0,0.25);
+  transition:    border-color 0.35s;
+}
+
+.event-stop:hover .event-stop__pin {
+  transform:   scale(1.08) translateY(-4px);
+  box-shadow:  0 12px 40px -8px rgba(204,0,0,0.5);
+  border-color: var(--clr-red);
+}
+.event-stop:hover .event-stop__pin::before {
+  border-color: rgba(204,0,0,0.55);
+}
+
+/* Texto abaixo do pin */
+.event-stop__info { text-align: center; }
+
+.event-stop__name {
+  font-size:      13px;
+  font-weight:    900;
+  color:          var(--clr-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height:    1.2;
+}
+
+.event-stop__year {
+  margin-top:  4px;
+  font-size:   10px;
+  font-weight: 600;
+  color:       rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+}
+
+/* Badge "✓ Estivemos lá" ou "⚡ Em breve" */
+.event-stop__badge {
+  display:        inline-block;
+  margin-top:     8px;
+  font-size:      8.5px;
+  font-weight:    900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--clr-red);
+  border:         1px solid rgba(204,0,0,0.5);
+  padding:        3px 10px;
+  border-radius:  var(--radius-pill);
+  background:     rgba(204,0,0,0.07);
+}
+
+/* Variante: em breve (usa verde para indicar futuro) */
+.event-stop__badge--soon {
+  color:       var(--clr-green);
+  border-color: rgba(61,220,132,0.5);
+  background:  rgba(61,220,132,0.07);
+}
+
+/* Card "em breve": pin com borda verde e tracejada */
+.event-stop--upcoming .event-stop__pin {
+  border-color: var(--clr-green);
+  border-style: dashed;
+}
+.event-stop--upcoming:hover .event-stop__pin {
+  box-shadow:   0 12px 40px -8px rgba(61,220,132,0.4);
+  border-color: var(--clr-green);
+}
+.event-stop--upcoming:hover .event-stop__pin::before {
+  border-color: rgba(61,220,132,0.45);
+}
+
+/* ════════════════════════
+   5. CTA INSTAGRAM
+   Banner dramático chamando para seguir.
+   Fundo com gradiente + brilho decorativo.
+════════════════════════ */
+
+.feedbacks__cta {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  position:  relative;
+  z-index:   1;
+}
+
+.feedbacks__cta-inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             40px;
+  background:      linear-gradient(135deg, #0d0d0d 0%, #180000 50%, #0d0d0d 100%);
+  border:          1px solid rgba(204,0,0,0.22);
+  border-radius:   20px;
+  padding:         52px 56px;
+  position:        relative;
+  overflow:        hidden;
+}
+
+/* Brilho decorativo no canto superior direito */
+.feedbacks__cta-inner::before {
+  content:       '';
+  position:      absolute;
+  top: -80px; right: -80px;
+  width:         260px;
+  height:        260px;
+  border-radius: 50%;
+  background:    radial-gradient(circle, rgba(204,0,0,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Brilho decorativo no canto inferior esquerdo */
+.feedbacks__cta-inner::after {
+  content:       '';
+  position:      absolute;
+  bottom: -50px; left: -50px;
+  width:         180px;
+  height:        180px;
+  border-radius: 50%;
+  background:    radial-gradient(circle, rgba(204,0,0,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Conteúdo de texto */
+.feedbacks__cta-text {
+  position: relative;
+  z-index:  1;
+}
+
+.feedbacks__cta-eyebrow {
+  font-size:      10px;
+  font-weight:    800;
+  color:          rgba(255,255,255,0.4);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom:  12px;
+  display:        block;
+}
+
+/* Handle do Instagram — destaque principal */
+.feedbacks__cta-handle {
+  font-size:      clamp(28px, 4.5vw, 52px);
+  font-weight:    900;
+  color:          var(--clr-text);
+  letter-spacing: -0.02em;
+  line-height:    1;
+}
+
+.feedbacks__cta-desc {
+  margin-top:  14px;
+  font-size:   13px;
+  color:       rgba(255,255,255,0.42);
+  line-height: 1.7;
+  max-width:   400px;
+}
+
+/* Botão de seguir */
+.feedbacks__cta-btn {
+  position:        relative;
+  z-index:         1;
+  display:         inline-flex;
+  align-items:     center;
+  gap:             10px;
+  background:      var(--clr-red);
+  color:           #fff;
+  text-decoration: none;
+  font-size:       12px;
+  font-weight:     900;
+  letter-spacing:  0.1em;
+  text-transform:  uppercase;
+  padding:         18px 32px;
+  border-radius:   var(--radius-pill);
+  white-space:     nowrap;
+  flex-shrink:     0;
+  transition:      filter 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.feedbacks__cta-btn:hover {
+  filter:     brightness(1.15);
+  transform:  translateY(-2px);
+  box-shadow: 0 8px 30px -4px rgba(204,0,0,0.5);
+}
+
+/* ════════════════════════
+   RESPONSIVO — FEEDBACKS
+════════════════════════ */
+
+/* Tablet largo */
+@media (max-width: 1024px) {
+  .feedbacks__mural { grid-template-columns: repeat(4, 1fr); }
+
+  .feedbacks__cta-inner { padding: 40px 40px; }
+
+  .feedbacks__timeline { padding: 0 20px; }
+  .feedbacks__timeline-line {
+    left:  calc(20px + 12.5%);
+    right: calc(20px + 12.5%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .feedbacks__mural { grid-template-columns: repeat(3, 1fr); }
+
+  /* CTA vira coluna */
+  .feedbacks__cta-inner {
+    flex-direction: column;
+    text-align:     center;
+    padding:        40px 32px;
+    gap:            28px;
+  }
+  .feedbacks__cta-desc { max-width: 100%; margin: 0 auto; }
+
+  /* Timeline: event pins ficam menores */
+  .event-stop__pin { width: 88px; height: 88px; font-size: 32px; }
+  .feedbacks__timeline-line { top: 44px; }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .feedbacks__stats { max-width: 100%; }
+  .feedbacks__stat-sep { display: none; }
+  .feedbacks__stat { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px; }
+  .feedbacks__stat:last-child { border-bottom: none; }
+
+  /* Timeline vira coluna vertical */
+  .feedbacks__timeline {
+    flex-direction: column;
+    align-items:    flex-start;
+    padding:        0 0 0 24px;
+    gap:            0;
+  }
+
+  /* Linha fica vertical (à esquerda dos pins) */
+  .feedbacks__timeline-line {
+    top:    calc(4px + 44px);    /* abaixo do centro do 1º pin */
+    bottom: calc(4px + 44px);   /* acima do centro do último  */
+    left:   43px;                /* centro do pin (88px / 2)   */
+    right:  auto;
+    width:  2px;
+    height: auto;
+    background: linear-gradient(
+      to bottom,
+      var(--clr-red)   0%,
+      var(--clr-red)  75%,
+      var(--clr-green) 100%
+    );
+  }
+
+  /* Cada evento vira uma linha horizontal */
+  .event-stop {
+    flex-direction: row;
+    align-items:    center;
+    gap:            20px;
+    padding:        16px 0;
+    text-align:     left;
+    width:          100%;
+  }
+
+  .event-stop__info { text-align: left; }
+  .event-stop__pin  { flex-shrink: 0; }
+}
+
+/* Mobile grande */
+@media (max-width: 580px) {
+  .feedbacks { padding: 64px 14px 72px; }
+
+  .feedbacks__mural { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+  .feedbacks__mural { margin-bottom: 60px; }
+
+  .feedbacks__events-section { margin-bottom: 60px; }
+
+  .feedbacks__cta-inner { padding: 32px 24px; border-radius: 14px; }
+  .feedbacks__cta-handle { font-size: clamp(22px, 8vw, 38px); }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .feedbacks__stat { min-width: 100%; }
+
+  .event-stop__pin { width: 72px; height: 72px; font-size: 26px; }
+  .feedbacks__timeline-line { left: 35px; }
+  .feedbacks__timeline { padding: 0 0 0 16px; }
+
+  .feedbacks__cta-btn { width: 100%; justify-content: center; padding: 16px 24px; }
+}

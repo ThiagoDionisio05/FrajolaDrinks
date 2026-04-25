@@ -1,0 +1,19 @@
+/* ══════════════════════════════════════════════════
+   FRAJOLA DRINKS — PONTO DE ENTRADA DOS ESTILOS
+
+   Este arquivo importa todos os outros na ordem
+   correta. Cada arquivo cuida de uma parte do site.
+
+   ORDEM IMPORTA: o arquivo importado depois pode
+   sobrescrever estilos do anterior.
+══════════════════════════════════════════════════ */
+
+@import './variables.css';  /* 1. Variáveis (cores, tamanhos reutilizados) */
+@import './global.css';     /* 2. Reset e estilos base do body              */
+@import './navbar.css';     /* 3. Barra de navegação + menu mobile          */
+@import './hero.css';       /* 4. Seção principal (título, logo, drinks)    */
+@import './features.css';   /* 5. Diferenciais do produto                   */
+@import './drinks.css';     /* 6. Cards de drinks com álcool                */
+@import './fresh.css';      /* 7. Cards fresh sem álcool                    */
+@import './feedbacks.css';  /* 8. Feedbacks: fotos, eventos, Instagram CTA  */
+@import './contato.css';    /* 9. Contato + Footer com créditos             */

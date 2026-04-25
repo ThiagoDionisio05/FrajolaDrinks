@@ -1,0 +1,167 @@
+/* ══════════════════════════════════
+   FEATURES (DIFERENCIAIS)
+
+   Card horizontal mostrando os 4 pontos
+   fortes do produto + faixa de eventos.
+══════════════════════════════════ */
+
+.features {
+  background:  var(--clr-bg);
+  padding:     0 20px;
+  flex-shrink: 0;
+}
+
+/* Card principal com borda vermelha */
+.features__card {
+  max-width:     var(--max-width);
+  margin:        0 auto;
+  background:    var(--clr-surface);
+  border-radius: 12px;
+  border:        2px solid var(--clr-red);
+  display:       flex;
+  align-items:   center;
+  overflow:      hidden;
+}
+
+.features__grid {
+  display:     flex;
+  align-items: center;
+  flex:        1;
+  padding:     12px 0;
+}
+
+.features__item {
+  display:     flex;
+  align-items: flex-start;
+  gap:         12px;
+  padding:     6px 20px;
+  flex:        1;
+}
+
+.features__icon     { flex-shrink: 0; margin-top: 2px; }
+.features__icon svg { display: block; }
+
+.features__text {
+  display:        flex;
+  flex-direction: column;
+  gap:            3px;
+}
+
+.features__label {
+  font-size:      12px;
+  font-weight:    800;
+  color:          var(--clr-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height:    1.1;
+}
+.features__label--red { color: var(--clr-red); }
+
+.features__desc {
+  margin-top:  4px;
+  font-size:   10.5px;
+  font-weight: 500;
+  color:       #888;
+  line-height: 1.5;
+  max-width:   160px;
+}
+
+/* Divisor vertical entre os itens */
+.features__divider {
+  width:      1px;
+  height:     54px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+/* ── Faixa inferior com tipos de evento ── */
+.features__strip {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   8px 0 10px;
+}
+
+.features__strip-inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-wrap:       wrap;
+}
+
+.features__tag {
+  display:     flex;
+  align-items: center;
+  gap:         7px;
+  font-size:   11px;
+  font-weight: 700;
+  color:       #bbb;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding:     4px 18px;
+}
+.features__tag svg { flex-shrink: 0; color: #bbb; }
+
+.features__sep {
+  color:       rgba(255,255,255,0.2);
+  font-size:   18px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ════════════════════════
+   RESPONSIVO — FEATURES
+════════════════════════ */
+
+@media (max-width: 1024px) {
+  .features__item { padding: 8px 16px; }
+  .features__desc { max-width: 140px; }
+}
+
+@media (max-width: 768px) {
+  .features__card {
+    flex-direction: column;
+    border: 2px solid var(--clr-red);
+  }
+  .features__grid {
+    flex-wrap: wrap;
+    padding:   16px;
+    gap:       16px;
+  }
+  .features__item    { flex: 1 1 calc(50% - 16px); padding: 8px; }
+  .features__divider { display: none; }
+  .features__desc    { max-width: 100%; }
+
+  /* Faixa com scroll horizontal em telas pequenas */
+  .features__strip {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .features__strip::-webkit-scrollbar { display: none; }
+  .features__strip-inner {
+    flex-wrap:       nowrap;
+    justify-content: flex-start;
+    padding:         0 16px;
+    width:           max-content;
+    min-width:       100%;
+  }
+  .features__tag { white-space: nowrap; }
+}
+
+@media (max-width: 580px) {
+  .features             { padding: 0 12px; }
+  .features__card       { border-radius: 10px; }
+}
+
+@media (max-width: 480px) {
+  .features__item     { flex: 1 1 100%; gap: 8px; padding: 6px 12px; }
+  .features__icon svg { width: 22px; height: 22px; }
+  .features__label    { font-size: 10px; }
+  .features__desc     { font-size: 9.5px; }
+  .features__strip-inner { gap: 8px 0; }
+  .features__tag      { padding: 4px 12px; font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  .features__cta { padding: 14px 16px; }
+}

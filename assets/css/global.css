@@ -1,0 +1,23 @@
+/* ══════════════════════════════════
+   RESET E ESTILOS BASE
+
+   Remove os estilos padrão do navegador
+   e define a aparência base da página.
+══════════════════════════════════ */
+
+/* Zera margem e padding de todos os elementos.
+   box-sizing: border-box → padding e border
+   são incluídos no tamanho total do elemento. */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:     var(--clr-bg);
+  font-family:    'Montserrat', sans-serif;
+  display:        flex;
+  flex-direction: column;
+  min-height:     100vh; /* ocupa pelo menos a altura toda da tela */
+}
