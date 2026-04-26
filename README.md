@@ -8,7 +8,7 @@
 > Landing page completa e responsiva para uma marca de drinks artesanais.  
 > Projeto real desenvolvido do zero com HTML, CSS e JavaScript puros — sem frameworks.
 
-> link do projeto: https://frajola-drinks.vercel.app/
+> Link do projeto: https://frajola-drinks.vercel.app/
 ---
 
 ## 📸 Visão Geral
